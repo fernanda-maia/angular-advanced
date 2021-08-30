@@ -1,0 +1,65 @@
+<h2 mat-dialog-title>{{alert.title}}</h2>
+<div mat-dialog-content>
+{{alert.description}}
+</div>
+<div mat-dialog-actions>
+    <form class="form" 
+          novalidate
+          autocomplete="off"
+          [formGroup]="createTask"
+          (ngSubmit)="post()">
+        <mat-form-field class="w100" 
+                        [formGroup]="createTask" 
+                        appearance="standard">
+            
+            <mat-label>Title</mat-label>
+            <input matInput 
+                   type="text" 
+                   name="title" 
+                   formControlName="title">
+        </mat-form-field>
+    
+        <mat-form-field [formGroup]="createTask" appearance="standard">
+            <mat-label>Time</mat-label>
+            <input matInput 
+                   type="time" 
+                   name="hour" 
+                   formControlName="hour">
+        </mat-form-field>
+    
+        <mat-form-field [formGroup]="createTask" appearance="standard">
+            <mat-label>Date</mat-label>
+            <input matInput 
+                  [matDatepicker]="picker"
+                  name="date" 
+                  formControlName="date">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field class="w100" 
+                        [formGroup]="createTask" 
+                        appearance="standard">
+            <mat-label>Description</mat-label>
+            <textarea matInput
+                      name="description"
+                      formControlName="description">
+            </textarea>
+        </mat-form-field>
+          
+        <div class="btn-group">
+            <button mat-raised-button 
+                    type="submit"
+                    mat-dialog-close 
+                    [disabled]="createTask.invalid">
+                    {{alert.okBtn}}
+            </button>
+            
+            <button class="cancel-btn" mat-raised-button 
+                    [mat-dialog-close]="true" 
+                    *ngIf="alert.hasCancelBtn">
+                {{alert.cancelBtn}}
+            </button>
+        </div>
+    </form>
+</div>

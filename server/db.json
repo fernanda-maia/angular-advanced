@@ -1,0 +1,23 @@
+{
+  "3F3DEC1": [
+    {
+      "id": 1,
+      "date": "2021-10-10",
+      "hour": "10:00:00",
+      "title": "Title",
+      "description": "I'm a beatiful description",
+      "done": false
+    }
+  ],
+  
+  "users": [
+    {
+      "id": 1,
+      "firstName": "Fernanda",
+      "lastName": "Ribeiro",
+      "email": "teste@email.com",
+      "password": "1234567890",
+      "code": "3F3DEC1"
+    }
+  ]
+}

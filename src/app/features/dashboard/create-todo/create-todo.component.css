@@ -1,0 +1,73 @@
+::ng-deep.mat-dialog-container {
+    background-color: var(--dark-blue-color);
+    box-shadow: var(--box-shadow);
+    color: var(--gray-color);
+    text-align: center;
+    max-width: 40rem;
+}
+
+.mat-dialog-title {
+    font-size: 1.7rem;
+}
+
+.mat-dialog-content {
+    font-size: 1.2rem;
+}
+
+.btn-group, .mat-dialog-actions{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.mat-raised-button,
+.mat-raised-button:disabled:hover {
+    flex-basis: 45%;
+    font-size: 1rem;
+    padding: 0.1rem 0;
+    font-weight: 100;
+    color: #c9c9c97e;
+    margin: 1rem 0;
+    border: 2px solid #c9c9c97e;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background-color: transparent;
+    box-shadow: none;
+    transition: 0.2s;
+}
+
+.mat-raised-button:hover,
+.mat-raised-button:focus,
+.mat-raised-button:focus-visible,
+.mat-raised-button:focus-within {
+    color: var(--white-color);
+    border-color: var(--white-color);
+}
+
+.cancel-btn, 
+.cancel-btn:focus, 
+.cancel-btn:focus-visible,
+.cancel-btn:focus-within {
+    color: var(--red-color);
+    border-color: var(--red-color);
+}
+
+.form {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+.mat-form-field {
+    flex-basis: 45%;
+}
+
+.w100, .btn-group  {
+    flex-basis: 100%;
+}
+
+@media only screen and (max-width: 540px) {
+    .mat-form-field {
+        flex-basis: 100%;
+    }
+}

@@ -1,0 +1,23 @@
+<div class="container">
+
+    <div class="add-link">Today Tasks</div>
+    <div class="edit-label">ACTION</div>
+   
+    <mat-accordion>
+        <div class="wrapper">
+            <app-expansion-panel class="collapse" [task]="task" ></app-expansion-panel>
+            <span class="edit-btn">
+                <mat-icon>{{task.done? 'remove_done' : 'done_all'}}</mat-icon>
+            </span>
+        </div>
+
+        <div class="wrapper">
+            <app-expansion-panel class="collapse" [task]="task1" ></app-expansion-panel>
+            <span class="edit-btn">
+                <mat-icon>{{task1.done? 'remove_done' : 'done_all'}}</mat-icon>
+            </span>
+        </div>
+       
+    </mat-accordion>
+
+</div>

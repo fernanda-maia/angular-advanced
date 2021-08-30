@@ -1,0 +1,22 @@
+<header class="app-header" style="background-image: url(assets/img/header.png);">
+    <img src="assets/img/logo.png" alt="Logo">
+    <h2>{{title}}</h2>
+    <div class="card-row">
+        <mat-card (click)="redirectTo('/dashboard/list')">
+            <mat-icon>checklist</mat-icon>
+            <span class="action">List All</span>
+        </mat-card>
+        
+        <!--FIXME: create add new task view and logout user-->
+        <mat-card (click)="openDialog()">
+            <mat-icon>post_add</mat-icon>
+            <span class="action">New Task</span>
+        </mat-card>
+        
+        <mat-card  (click)="redirectTo('/')">
+            <mat-icon>logout</mat-icon>
+            <span class="action">Logout</span>
+        </mat-card>
+    </div>
+
+</header>

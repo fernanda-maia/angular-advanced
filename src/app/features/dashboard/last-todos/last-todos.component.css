@@ -1,0 +1,88 @@
+.container {
+    display: grid; 
+    grid-template-columns: 0.1fr 4.8fr 1fr; 
+    grid-template-rows: 0.3fr 1.7fr 1fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+      "add add edit"
+      "list list list"
+      "list list list"; 
+}
+
+
+.add-link {
+    word-spacing: 5px;
+    grid-area: add;
+}
+
+.edit-label {
+    grid-area: edit;
+
+}
+
+.mat-accordion {
+    grid-area: list;
+}
+
+.wrapper {
+    padding: 1rem 0;
+    display: grid; 
+    grid-template-columns: 0.1fr 4.8fr 1fr; 
+    grid-template-rows: 0.3fr 1.7fr 1fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+      "collapse collapse actions"
+      "collapse collapse actions"
+      "collapse collapse actions"; 
+}
+
+.collapse {
+    grid-area: collapse;
+}
+
+.edit-btn {
+    grid-area: actions;
+}
+
+.add-link, .edit-label {
+    margin-bottom: 3rem;
+    background-color: var(--dark-blue-color);
+    color: #fff;
+}
+
+.add-link, .edit-label, .edit-btn {
+    padding: 1rem 5rem;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.mat-icon {
+    color: #949494;
+    transition: 0.5s;
+    cursor: pointer;
+    font-size: 3rem;;
+}
+
+.mat-icon:hover {
+    color: var(--dark-blue-color);
+}
+
+
+@media only screen and (max-width: 760px) {
+    .add-link, .edit-label, .edit-btn {
+        padding: 1rem 2rem;
+        font-size: 1.2rem;
+    }
+
+    .collapse {
+        max-width: 70vw;
+    }
+
+    .mat-icon {
+        font-size: 2.7rem;
+    }
+}

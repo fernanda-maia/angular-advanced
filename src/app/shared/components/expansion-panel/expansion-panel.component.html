@@ -1,0 +1,23 @@
+<mat-expansion-panel class="mat-elevation-z0" 
+                     hideToggle="true"
+                     (opened)="state = true"
+                     (closed)="state = false">
+
+    <mat-expansion-panel-header>
+        <mat-panel-title>{{task.title}}</mat-panel-title>
+        
+        <mat-panel-description>
+            <mat-icon *ngIf="!state">add</mat-icon>
+            <mat-icon *ngIf="state">remove</mat-icon>
+        </mat-panel-description> 
+    </mat-expansion-panel-header>
+
+    <div class="info-panel">
+        <div>
+            {{task.date | date: 'dd/MM/yyyy'}}&emsp;{{task.hour}}
+        </div>
+        <p>{{task.description}}</p>
+    </div>
+</mat-expansion-panel>
+
+  
