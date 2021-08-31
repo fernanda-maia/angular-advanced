@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { ListService } from './services/list.service';
 import { MaterialModule } from 'src/app/shared/material/material.module';
 
 import { ListComponent } from './list/list.component';
@@ -43,6 +42,6 @@ import { ExpansionPanelComponent } from 'src/app/shared/components/expansion-pan
     ])
   ],
 
-  providers: [ListService]
+  providers: []
 })
 export class DashboardModule { }

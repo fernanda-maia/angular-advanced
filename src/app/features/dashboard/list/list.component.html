@@ -9,52 +9,45 @@
         </div>
     </header>
     
-    <div class="list-section">
-        <mat-card>
+    <div class="list-section" *ngIf="tasks.length; else noContent">
+        <mat-card *ngFor="let task of tasks">
             <mat-card-content>
                 <img mat-card-image [src]="task.done? 'assets/img/tick.png' : 'assets/img/todo.png'">
                 {{task.date | date: 'dd/MM/yyyy'}}
             </mat-card-content>
+
             <mat-card-title>{{task.title}}</mat-card-title>
             <mat-card-subtitle>{{task.hour}}</mat-card-subtitle>
             <mat-card-content>{{task.description}}</mat-card-content>
+
             <mat-card-actions>
-                <mat-icon>{{task.done? 'remove_done' : 'done_all'}}</mat-icon>
-                <mat-icon>delete_outline</mat-icon>
+                <mat-icon (click)="toggleDone(task.id, task)"
+                          [ngStyle]="{'color': (task.done)? '#0b8a00' : '#991c1c'}">
+                    {{!task.done? 'remove_done' : 'done_all'}}
+                </mat-icon>
+                <mat-icon (click)="deleteTask(task.id)">delete_outline</mat-icon>
             </mat-card-actions>
-        </mat-card>
 
-        <mat-card>
-            <mat-card-content>
-                <img mat-card-image [src]="task1.done? 'assets/img/tick.png' : 'assets/img/todo.png'">
-                {{task1.date | date: 'dd/MM/yyyy'}}
-            </mat-card-content>
-            <mat-card-title>{{task1.title}}</mat-card-title>
-            <mat-card-subtitle>{{task1.hour}}</mat-card-subtitle>
-            <mat-card-content>{{task1.description}}</mat-card-content>
-            <mat-card-actions>
-                <mat-icon>{{task1.done? 'remove_done' : 'done_all'}}</mat-icon>
-                <mat-icon>delete_outline</mat-icon>
-            </mat-card-actions>
         </mat-card>
-
-
-
-        <mat-card>
-            <img mat-card-image [src]="task1.done? 'assets/img/tick.png' : 'assets/img/todo.png'">
-            <mat-card-title>{{task1.title}}</mat-card-title>
-            <mat-card-content>{{task1.description}}</mat-card-content>
-        </mat-card>
-        <mat-card>
-            <img mat-card-image [src]="task1.done? 'assets/img/tick.png' : 'assets/img/todo.png'">
-            <mat-card-title>{{task1.title}}</mat-card-title>
-            <mat-card-content>{{task1.description}}</mat-card-content>
-        </mat-card>
-        <mat-card>
-            <img mat-card-image [src]="task1.done? 'assets/img/tick.png' : 'assets/img/todo.png'">
-            <mat-card-title>{{task1.title}}</mat-card-title>
-            <mat-card-content>{{task1.description}}</mat-card-content>
-        </mat-card>
-
     </div>
+
+    <div class="actions" *ngIf="tasks.length">
+        <button (click)="loadMore()" 
+                [disabled]="endList"
+                class="load-btn" mat-raised-button>
+                {{endList? 'No more content': 'Load More'}}
+        </button>
+    </div>
+
+    <ng-template #noContent>
+        <div class="no-content" >
+            <img src="assets/img/notask.png" alt="No Task!" >
+            <h3>Looks Like Your List is empty</h3>
+            <div class="actions">
+                <button (click)="openDialog()" mat-raised-button>
+                    Add a new task
+            </button>
+        </div>
+        </div>
+    </ng-template>
 </div>

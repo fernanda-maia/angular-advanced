@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Alert } from 'src/app/shared/models/alert';
 import { Todo } from 'src/app/shared/models/todo';
+import { TodoService } from 'src/app/shared/services/todo.service';
 
 @Component({
   selector: 'app-create-todo',
@@ -24,7 +25,8 @@ export class CreateTodoComponent implements OnInit {
 
 
   constructor(public dialogRef: MatDialogRef<CreateTodoComponent>,
-              public formBuilder: FormBuilder) {
+              public formBuilder: FormBuilder,
+              private todoService: TodoService) {
 
    }
 
@@ -37,12 +39,9 @@ export class CreateTodoComponent implements OnInit {
     
     if(!this.createTask.invalid) {
       const datas = this.createTask.getRawValue() as Todo;
+      
+      this.todoService.createTodo(datas).subscribe();
 
-      window.alert(datas.title);
-      window.alert(datas.description);
-      window.alert(datas.hour);
-      window.alert(datas.date);
-      window.alert(datas.done)
     } 
   }
 

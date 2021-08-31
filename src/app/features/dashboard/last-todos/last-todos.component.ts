@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Todo } from 'src/app/shared/models/todo';
+import { TodoService } from 'src/app/shared/services/todo.service';
+import { ConfigParams } from 'src/app/shared/models/config-params';
+import { MatDialog } from '@angular/material/dialog';
+import { CreateTodoComponent } from '../create-todo/create-todo.component';
+
 
 @Component({
   selector: 'app-last-todos',
@@ -8,28 +14,31 @@ import { Todo } from 'src/app/shared/models/todo';
 })
 export class LastTodosComponent implements OnInit {
 
-  task = {
-    id: 1,
-    date: new Date(),
-    hour: "10:00:00",
-    title: "Something TODO",
-    description: "It's very Important!I have something very important to do. It is something really really important",
-    done: false
+  tasks: Todo[] = []; 
 
-  } as Todo;
+  configParams: ConfigParams = {
+    page: 0,
+    limit: 10
 
-  task1 = {
-    id: 1,
-    date: new Date(),
-    hour: "10:00:00",
-    title: "Something TODO 2",
-    description: "It's very Important!",
-    done: false
+} as ConfigParams;
 
-  } as Todo;
+  constructor(public dialog: MatDialog,
+              private todoService: TodoService) { 
 
-  constructor() { }
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.todoService.getByPage(this.configParams).subscribe((td: Todo[]) => {
+        this.tasks = td;
+    });
+  }
 
+  toggleDone(id: number, todo: Todo) {
+      this.todoService.toggleDone(todo, id)
+        .subscribe(td => this.tasks = this.tasks.map(item => item.id != td.id? item : td));
+  }
+
+  openDialog(): void {
+    this.dialog.open(CreateTodoComponent);
+  }
 }

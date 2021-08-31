@@ -1,23 +1,33 @@
 <div class="container">
 
     <div class="add-link">Today Tasks</div>
-    <div class="edit-label">ACTION</div>
+    <div class="edit-label">STATUS</div>
    
-    <mat-accordion>
-        <div class="wrapper">
+    <mat-accordion *ngIf="tasks.length; else noContent">
+        <div class="wrapper" 
+             *ngFor="let task of tasks">
             <app-expansion-panel class="collapse" [task]="task" ></app-expansion-panel>
             <span class="edit-btn">
-                <mat-icon>{{task.done? 'remove_done' : 'done_all'}}</mat-icon>
+                <mat-icon [ngStyle]="{
+                        'color': (task.done)? '#0b8a00' : '#991c1c'
+                    }"
+                    (click)="toggleDone(task.id, task)">
+                    {{!task.done? 'remove_done' : 'done_all'}}
+                </mat-icon>
             </span>
         </div>
-
-        <div class="wrapper">
-            <app-expansion-panel class="collapse" [task]="task1" ></app-expansion-panel>
-            <span class="edit-btn">
-                <mat-icon>{{task1.done? 'remove_done' : 'done_all'}}</mat-icon>
-            </span>
-        </div>
-       
     </mat-accordion>
+
+    <ng-template #noContent>
+        <div class="no-content" >
+            <img src="assets/img/notask.png" alt="No Task!" >
+            <h3>Looks Like Your List is empty</h3>
+            <div class="actions">
+                <button (click)="openDialog()" mat-raised-button>
+                    Add a new task
+            </button>
+        </div>
+        </div>
+    </ng-template>
 
 </div>
