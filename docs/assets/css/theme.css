@@ -1,0 +1,9 @@
+:root {
+    --white-color: #fff;
+    --gray-color: #e7e7e7;
+    --dark-blue-color: #0b0046;
+    --red-color: #860122;
+    --white-bg-color: #f7f7f7;
+    --img-shadow-filter: drop-shadow(15px 10px 2px #0c0c0c6e);
+    --box-shadow: 2px 1px 19px 0px rgba(0,0,0,0.18);
+}
